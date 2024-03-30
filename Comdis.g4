@@ -1,19 +1,20 @@
 grammar Comdis;
 
-message:   (Segment)* ;
+message:   (segment)+ ;
 
-Segment: Tag (DATENELEMENTTRENNZEICHEN Wert)*  SEGMENTENDZEICHEN ;
+segment: tag (DATENELEMENTTRENNZEICHEN datenelement | DATENELEMENTTRENNZEICHEN datenelementgruppe )*  SEGMENTENDZEICHEN ;
 
-Tag: 'UNH';
+tag: 'UNH';
 
-Wert : ALPHA;
+datenelement: WERT;
 
+datenelementgruppe: gruppendatelement ( GRUPPENDATENELEMENTTRENNZEICHEN gruppendatelement )* ;
+
+gruppendatelement : WERT ;
+
+WERT : [a-zA-Z0-9.]+;
 GRUPPENDATENELEMENTTRENNZEICHEN : [:] ;
 DATENELEMENTTRENNZEICHEN : [+] ;
 SEGMENTENDZEICHEN : ['] ;
-
-ALPHA : [a-zA-Z]+;
-
-
-NEWLINE : [\r\n]+ ;
-INT     : [0-9]+ ;
+FREIGABEZEICHEN : [?] ;
+DEZIMALZEICHEN  : [.] ;
