@@ -1,4 +1,3 @@
-
 Zum Testen des Parsers:
 antlr4-parse Comdis.g4 message -tree comdis.edi
 

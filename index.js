@@ -8,3 +8,4 @@ const lexer = new MyGrammarLexer(chars);
 const tokens = new antlr4.CommonTokenStream(lexer);
 const parser = new MyGrammarParser(tokens);
 const tree = parser.message();
+console.log(tree);
